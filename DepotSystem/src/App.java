@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import javax.swing.*;
 
 public class App {
@@ -103,10 +104,37 @@ public class App {
       currCusLabel.setText("Current customer: ");
       currParcelText.setText("");
       payButton.setEnabled(false);
-      // neu con customer
       if (tempCusArray.length > 0) {
         nextButton.setEnabled(true);
       }
+    });
+
+    printLogButton.addActionListener((actionEvent) -> {
+      try {
+        Log.printToFile("out.txt");
+      } catch (FileNotFoundException ex) {
+      }
+    });
+
+    enterQueueButton.addActionListener((actionEvent) -> {
+      Manager.addCustomer(nameField.getText(), parcelIDField.getText());
+      String[] tempCusArray =
+          Manager.getCusQueue().getQueueofCustomersToArray();
+      if (tempCusArray.length > 0) {
+        nextButton.setEnabled(true);
+      }
+      queueList.setListData(tempCusArray);
+    });
+
+    deleteQueueButton.addActionListener((actionEvent) -> {
+      Manager.removeCustomer(nameField.getText());
+      Manager.removeCustomer(parcelIDField.getText());
+      String[] tempCusArray =
+          Manager.getCusQueue().getQueueofCustomersToArray();
+      if (tempCusArray.length == 0) {
+        nextButton.setEnabled(false);
+      }
+      queueList.setListData(tempCusArray);
     });
   }
 }
