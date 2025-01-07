@@ -44,7 +44,8 @@ public class Manager {
       parcelMap.addMapping(parcelID, cusName);
       Log.writeToLog("Customer " + cusName + " added to queue successfully.");
     } else {
-      Log.writeToLog("Failed to add customer " + cusName + "to queue.");
+      Log.writeToLog("Invalid parcel ID. Failed to add customer " + cusName +
+                     " to queue.");
     }
   }
 

@@ -1,7 +1,7 @@
 Customer Hoai Nam Ngo added to queue successfully.
 Customer Hoai Nam Ngo added to queue successfully.
 Customer Ho Nam Ngo added to queue successfully.
-Failed to add customer Hoai Namgoto queue.
+Invalid parcel ID. Failed to add customer Hoai Namgo to queue.
 Customer Hoai N Ngo added to queue successfully.
 Customer Hoai Namgo added to queue successfully.
 Customer H Nam go added to queue successfully.

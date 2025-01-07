@@ -1,9 +1,8 @@
 
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class QueueofCustomers {
-  static Queue<Customer> queueOfCustomers = new LinkedList<>();
+  static LinkedList<Customer> queueOfCustomers = new LinkedList<>();
 
   public void addCustomer(String cusName, String parcelID) {
     queueOfCustomers.add(new Customer(cusName, parcelID));
@@ -42,6 +41,14 @@ public class QueueofCustomers {
     } else {
       return null;
     }
+  }
+
+  public String[] getQueueofCustomersToArray() {
+    String[] temp = new String[queueOfCustomers.size()];
+    for (int i = 0; i < queueOfCustomers.size(); i++) {
+      temp[i] = queueOfCustomers.get(i).toString();
+    }
+    return temp;
   }
 
   @Override
