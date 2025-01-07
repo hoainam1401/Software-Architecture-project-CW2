@@ -1,30 +1,40 @@
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ParcelMap {
-  static HashMap<Parcel, String> parcelMap = new HashMap<>();
-  static ArrayList<String> sortedNameList = new ArrayList<>(parcelMap.values());
+  // maps the parcel id with customer name
+  static HashMap<String, String> map = new HashMap<>();
+  // static ArrayList<String> sortedNameList = new
+  // ArrayList<>(parcelMap.values());
 
-  public static void addParcel(String parcelID, String cusName, int daysInDepot,
-                               int weight, int width, int length, int height) {
-    Parcel newParcel = new Parcel(parcelID, cusName, daysInDepot, weight, width,
-                                  length, height);
-    parcelMap.put(newParcel, newParcel.getCusName());
-  }
-
-  public static void deleteParcel(String parcelID) {
-    parcelMap.forEach((parcel, object) -> {
-      if (parcel.getParcelID().equals(parcelID)) {
-        parcelMap.remove(parcel);
+  public void deleteParcel(String parcelID) {
+    map.forEach((currParcelID, cusName) -> {
+      if (currParcelID.equals(parcelID)) {
+        map.remove(currParcelID);
       }
     });
   }
 
-  public static void sortMap() {
+  public void sortMap() {
     // Collections.sort(sortedNameList);
     // for (String name : sortedNameList)
     // System.out.println("Parcel = " + parcelMap.
     // + ", Value = " + map.get(x));
+  }
+
+  public void addMapping(String parcelID, String cusName) {
+    map.put(parcelID, cusName);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder s = new StringBuilder();
+    map.forEach((parcelID, cusName) -> {
+      s.append(parcelID);
+      s.append(" ");
+      s.append(cusName);
+      s.append("\n");
+    });
+    return s.toString();
   }
 }

@@ -1,5 +1,5 @@
 public class Worker {
-  Customer currentCus;
+  Customer currentCus = null;
 
-  public static void nextCustomer() { currentCus = ; }
+  public static void nextCustomer() {}
 }

@@ -1,6 +1,5 @@
 public class Parcel {
   String parcelID;
-  String cusName;
   int daysInDepot;
   int weight;
   int width;
@@ -8,10 +7,9 @@ public class Parcel {
   int height;
   Status status;
 
-  public Parcel(String parcelID, String cusName, int daysInDepot, int weight,
-                int width, int length, int height) {
+  public Parcel(String parcelID, int daysInDepot, int weight, int width,
+                int length, int height) {
     this.parcelID = parcelID;
-    this.cusName = cusName;
     this.daysInDepot = daysInDepot;
     this.weight = weight;
     this.length = length;
@@ -31,7 +29,11 @@ public class Parcel {
 
   public String getParcelID() { return parcelID; }
 
-  public String getCusName() { return cusName; }
+  @Override
+  public String toString() {
+    return parcelID + " " + daysInDepot + " " + weight + " " + width + " " +
+        length + " " + height + " " + status;
+  }
 
   enum Status { AVAILABLE, COLLECTED }
 }
