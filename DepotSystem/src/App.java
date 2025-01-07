@@ -76,5 +76,37 @@ public class App {
     frame.add(currParcelText);
     frame.add(nextButton);
     frame.add(printLogButton);
+
+    nextButton.addActionListener((actionEvent) -> {
+      Manager.nextCustomer();
+      final String[] tempArray =
+          Manager.getCusQueue().getQueueofCustomersToArray();
+      queueList.setListData(tempArray);
+      final Parcel tempParcel = Manager.getParcelMap().getMap().get(
+          (Manager.worker.getCurrCustomer().getParcelID()));
+      currCusLabel.setText("Current customer: " +
+                           Manager.worker.getCurrCusName());
+      nextButton.setEnabled(false);
+      currParcelText.setText(Manager.worker.parcelToField(tempParcel));
+      payButton.setEnabled(true);
+    });
+
+    payButton.addActionListener((actionEvent) -> {
+      Manager.worker.paid();
+      String[] tempParcelArray = Manager.getParcelMap().getParcelMapToArray();
+      String[] tempCollectedArray =
+          Manager.getCollectedMap().getParcelMapToArray();
+      String[] tempCusArray =
+          Manager.getCusQueue().getQueueofCustomersToArray();
+      parcelList.setListData(tempParcelArray);
+      collectedList.setListData(tempCollectedArray);
+      currCusLabel.setText("Current customer: ");
+      currParcelText.setText("");
+      payButton.setEnabled(false);
+      // neu con customer
+      if (tempCusArray.length > 0) {
+        nextButton.setEnabled(true);
+      }
+    });
   }
 }
