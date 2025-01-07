@@ -23,7 +23,10 @@ public class ParcelMap {
   }
 
   public void addMapping(String parcelID, String cusName) {
-    map.put(parcelID, cusName);
+    // only maps parcel id with customer name if parcel id is valid
+    if (ListofParcels.isValidID(parcelID)) {
+      map.put(parcelID, cusName);
+    }
   }
 
   @Override

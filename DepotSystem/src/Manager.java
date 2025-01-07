@@ -35,7 +35,7 @@ public class Manager {
   }
 
   public void addParcel(String parcelID, int daysInDepot, int weight, int width,
-                        int length, int height) {
+      int length, int height) {
     parcelList.addParcel(parcelID, daysInDepot, weight, width, length, height);
   }
 
