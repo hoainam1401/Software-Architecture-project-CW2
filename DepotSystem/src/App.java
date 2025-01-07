@@ -4,13 +4,18 @@ public class App {
   public static void main(String[] args) throws Exception {
     Manager.mapParcelFromFile("Parcels.csv");
     Manager.readCustomerFromFile("Custs.csv");
-    // Manager.nextCustomer();
+    Parcel currParcel = null;
+    if (Manager.worker.getCurrCustomer() != null) {
+      currParcel = Manager.getParcelMap().getMap().get(
+          (Manager.worker.getCurrCustomer().getParcelID()));
+    }
     String[] cusArray = Manager.getCusQueue().getQueueofCustomersToArray();
     String[] parcelArray = Manager.getParcelMap().getParcelMapToArray();
     String[] collectedArray = Manager.getCollectedMap().getParcelMapToArray();
     JFrame frame = new JFrame();
     frame.setSize(1500, 1000);
     frame.setLayout(null);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
     JLabel nameLabel = new JLabel("Name:");
     nameLabel.setBounds(50, 500, 100, 25);
@@ -36,6 +41,19 @@ public class App {
     collectedList.setBounds(800, 500, 300, 300);
     JLabel collectedLabel = new JLabel("Collected parcel list:");
     collectedLabel.setBounds(800, 475, 200, 25);
+    JButton nextButton = new JButton("Next customer");
+    nextButton.setBounds(450, 450, 125, 50);
+    JButton payButton = new JButton("Pay fee");
+    payButton.setEnabled(false);
+    payButton.setBounds(625, 450, 125, 50);
+    JLabel currParcelLabel = new JLabel("Current parcel:");
+    currParcelLabel.setBounds(450, 75, 100, 25);
+    JTextArea currParcelText = new JTextArea("");
+    currParcelText.setBounds(450, 100, 300, 300);
+    currParcelText.setEditable(false);
+    currParcelText.setText(Manager.worker.parcelToField(currParcel));
+    JButton printLogButton = new JButton("Log to File");
+    printLogButton.setBounds(500, 600, 150, 50);
     // TODO: Add Scroll
     JLabel currCusLabel =
         new JLabel("Current customer: " + Manager.worker.getCurrCusName());
@@ -53,5 +71,10 @@ public class App {
     frame.add(queueLabel);
     frame.add(parcelLabel);
     frame.add(collectedLabel);
+    frame.add(payButton);
+    frame.add(currParcelLabel);
+    frame.add(currParcelText);
+    frame.add(nextButton);
+    frame.add(printLogButton);
   }
 }
