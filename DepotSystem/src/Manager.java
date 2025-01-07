@@ -35,7 +35,7 @@ public class Manager {
   }
 
   public void addParcel(String parcelID, int daysInDepot, int weight, int width,
-      int length, int height) {
+                        int length, int height) {
     parcelList.addParcel(parcelID, daysInDepot, weight, width, length, height);
   }
 
@@ -43,4 +43,16 @@ public class Manager {
     parcelList.deleteParcel(parcelID);
     parcelMap.deleteParcel(parcelID);
   }
+
+  public void printParcelMap() {
+    System.out.println("Print parcel map: ");
+    System.out.println(parcelMap.toString());
+  }
+
+  public void printSortedMap() {
+    System.out.println("Print sorted parcel map: ");
+    System.out.println(parcelMap.getSortedMap().toString());
+  }
+
+  public void nextCustomer() { worker.nextCustomer(); }
 }

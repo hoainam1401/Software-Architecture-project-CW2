@@ -1,8 +1,7 @@
 public class Worker {
   Customer currentCus = null;
 
-  public static void nextCustomer() {
-  }
+  public void nextCustomer() {}
 
   // fee calculation:
   //// if weight <= 4 and l + w + h <= 15: 5
@@ -33,7 +32,7 @@ public class Worker {
         fee = 0.6 * fee;
       }
       // rounds to int
-      return (int) fee;
+      return (int)fee;
     }
   }
 }

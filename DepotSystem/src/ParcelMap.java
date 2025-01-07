@@ -1,11 +1,14 @@
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class ParcelMap {
   // maps the parcel id with customer name
   static HashMap<String, String> map = new HashMap<>();
-  // static ArrayList<String> sortedNameList = new
-  // ArrayList<>(parcelMap.values());
+  static ArrayList<String> sortedSurnameList = new ArrayList<>();
+  static HashMap<String, String> sortedMap = new LinkedHashMap<>();
 
   public void deleteParcel(String parcelID) {
     map.forEach((currParcelID, cusName) -> {
@@ -16,10 +19,24 @@ public class ParcelMap {
   }
 
   public void sortMap() {
-    // Collections.sort(sortedNameList);
-    // for (String name : sortedNameList)
-    // System.out.println("Parcel = " + parcelMap.
-    // + ", Value = " + map.get(x));
+    ArrayList<String> tempSurnameList = new ArrayList<>();
+    map.forEach(
+        (parcelID, cusName) -> { tempSurnameList.add(cusName.split(" ")[1]); });
+    Collections.sort(tempSurnameList);
+    // remove duplicates
+    for (String surname : tempSurnameList) {
+      if (!sortedSurnameList.contains(surname)) {
+        sortedSurnameList.add(surname);
+      }
+    }
+
+    for (String surname : sortedSurnameList) {
+      map.forEach((parcelID, cusName) -> {
+        if (cusName.split(" ")[1].equals(surname)) {
+          sortedMap.put(parcelID, cusName);
+        }
+      });
+    }
   }
 
   public void addMapping(String parcelID, String cusName) {
@@ -27,6 +44,11 @@ public class ParcelMap {
     if (ListofParcels.isValidID(parcelID)) {
       map.put(parcelID, cusName);
     }
+  }
+
+  public HashMap<String, String> getSortedMap() {
+    sortMap();
+    return sortedMap;
   }
 
   @Override

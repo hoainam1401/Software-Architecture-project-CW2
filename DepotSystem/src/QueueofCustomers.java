@@ -8,7 +8,5 @@ public class QueueofCustomers {
     queueOfCustomers.add(new Customer(cusName, parcelID));
   }
 
-  public static void deleteCustomer() {
-    queueOfCustomers.remove();
-  }
+  public static void deleteCustomer() { queueOfCustomers.remove(); }
 }
