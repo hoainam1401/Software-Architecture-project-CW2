@@ -21,9 +21,7 @@ public class ParcelMap {
   public void sortMap() {
     ArrayList<String> tempSurnameList = new ArrayList<>();
     map.forEach(
-        (parcelID, cusName) -> {
-          tempSurnameList.add(cusName.split(" ")[1]);
-        });
+        (parcelID, cusName) -> { tempSurnameList.add(cusName.split(" ")[1]); });
     Collections.sort(tempSurnameList);
     // remove duplicates
     for (String surname : tempSurnameList) {
@@ -48,9 +46,7 @@ public class ParcelMap {
     }
   }
 
-  public HashMap<String, String> getMap() {
-    return map;
-  }
+  public HashMap<String, String> getMap() { return map; }
 
   public HashMap<String, String> getSortedMap() {
     sortMap();

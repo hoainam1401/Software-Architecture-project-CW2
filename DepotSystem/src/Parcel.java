@@ -14,7 +14,7 @@ public class Parcel {
   Status status;
 
   public Parcel(String parcelID, int daysInDepot, int weight, int width,
-      int length, int height) {
+                int length, int height) {
     this.parcelID = parcelID;
     this.daysInDepot = daysInDepot;
     this.weight = weight;
@@ -31,9 +31,7 @@ public class Parcel {
     this.status = Status.AVAILABLE;
   }
 
-  public int calculateFee() {
-    return 0;
-  }
+  public int calculateFee() { return 0; }
 
   public void changeStatus() {
     if (status == Status.AVAILABLE) {
@@ -43,9 +41,7 @@ public class Parcel {
     }
   }
 
-  public String getParcelID() {
-    return parcelID;
-  }
+  public String getParcelID() { return parcelID; }
 
   @Override
   public String toString() {
@@ -53,32 +49,22 @@ public class Parcel {
         length + " " + height + " " + status;
   }
 
-  public int getType() {
-    return type;
-  }
+  public int getType() { return type; }
 
-  public int getWeight() {
-    return weight;
-  }
+  public int getWeight() { return weight; }
 
-  public int getDimSum() {
-    return length + width + height;
-  }
+  public int getDimSum() { return length + width + height; }
 
-  public int getDaysInDepot() {
-    return daysInDepot;
-  }
+  public int getDaysInDepot() { return daysInDepot; }
 
   // valid format is: X followed by 3 digits
   public static boolean isValidID(String parcelID) {
     String numbers = "0123456789";
     return (parcelID.length() == 4 && "X".equals(parcelID.charAt(0) + "") &&
-        numbers.contains(parcelID.charAt(1) + "") &&
-        numbers.contains(parcelID.charAt(2) + "") &&
-        numbers.contains(parcelID.charAt(3) + ""));
+            numbers.contains(parcelID.charAt(1) + "") &&
+            numbers.contains(parcelID.charAt(2) + "") &&
+            numbers.contains(parcelID.charAt(3) + ""));
   }
 
-  enum Status {
-    AVAILABLE, COLLECTED
-  }
+  enum Status { AVAILABLE, COLLECTED }
 }

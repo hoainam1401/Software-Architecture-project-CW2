@@ -7,11 +7,7 @@ public class Customer {
     this.parcelID = parcelID;
   }
 
-  public String getParcelID() {
-    return parcelID;
-  }
+  public String getParcelID() { return parcelID; }
 
-  public String getName() {
-    return name;
-  }
+  public String getName() { return name; }
 }

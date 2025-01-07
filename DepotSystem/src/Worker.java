@@ -1,7 +1,28 @@
 public class Worker {
   Customer currentCus = null;
+  QueueofCustomers cusQueue;
+  ListofParcels parcelList;
 
-  public void nextCustomer() {
+  public void process() {
+    cusQueue = Manager.getCusQueue();
+    parcelList = Manager.getParcelList();
+    currentCus = cusQueue.nextCustomer();
+    if (currentCus != null) {
+      String parcelID = currentCus.getParcelID();
+      if (parcelList.findParcel(parcelID)) {
+        Parcel collectedParcel = parcelList.deleteParcel(parcelID);
+        collectedParcel.changeStatus();
+        Manager.collectedparcelList.addParcel(collectedParcel);
+        Log.writeToLog(
+            "Parcel " + parcelID +
+            " has been picked up. Moving to collected parcel list.");
+      } else {
+        Log.writeToLog("Parcel ID " + parcelID +
+                       " not found, please try again.");
+      }
+    } else {
+      Log.writeToLog("There are currently no customer in queue.");
+    }
   }
 
   // fee calculation:
@@ -33,7 +54,7 @@ public class Worker {
         fee = 0.6 * fee;
       }
       // rounds to int
-      return (int) fee;
+      return (int)fee;
     }
   }
 }

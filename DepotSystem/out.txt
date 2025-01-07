@@ -1,13 +1,17 @@
-Customer Hoai Nam Ngo added successfully.
-Customer Hoai Nam Ngo added successfully.
-Customer Ho Nam Ngo added successfully.
-Failed to add customer Hoai Namgo.
-Customer Hoai N Ngo added successfully.
-Failed to add customer Hoai Namgo.
-Customer H Nam go added successfully.
-Customer Hoi m Ngo added successfully.
-Successfully removed all customers with name Hoai Nam Ngo.
-Parcel ID X155 not found.
-Successfully removed customer with parcel ID X150.
-Customer name or Parcel ID Hoai Namgo not found.
+Customer Hoai Nam Ngo added to queue successfully.
+Customer Hoai Nam Ngo added to queue successfully.
+Customer Ho Nam Ngo added to queue successfully.
+Failed to add customer Hoai Namgoto queue.
+Customer Hoai N Ngo added to queue successfully.
+Customer Hoai Namgo added to queue successfully.
+Customer H Nam go added to queue successfully.
+Customer Hoi m Ngo added to queue successfully.
+Parcel X036 has been picked up. Moving to collected parcel list.
+Parcel ID X151 not found, please try again.
+Parcel ID X152 not found, please try again.
+Parcel ID X150 not found, please try again.
+Parcel X720 has been picked up. Moving to collected parcel list.
+Parcel ID X153 not found, please try again.
+Parcel ID X150 not found, please try again.
+There are currently no customer in queue.
 

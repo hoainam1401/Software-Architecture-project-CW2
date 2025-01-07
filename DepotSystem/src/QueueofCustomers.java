@@ -13,30 +13,34 @@ public class QueueofCustomers {
     int sizeBefore = queueOfCustomers.size();
     if (Parcel.isValidID(deleteInput)) {
       queueOfCustomers.removeIf(
-          (customer) -> {
-            return customer.getParcelID().equals(deleteInput);
-          });
+          (customer) -> { return customer.getParcelID().equals(deleteInput); });
     } else {
       queueOfCustomers.removeIf(
-          (customer) -> {
-            return customer.getName().equals(deleteInput);
-          });
+          (customer) -> { return customer.getName().equals(deleteInput); });
     }
     if (queueOfCustomers.size() == sizeBefore) {
       if (Parcel.isValidID(deleteInput)) {
-        Log.writeToLog("Parcel ID " + deleteInput + " not found.");
+        Log.writeToLog("Parcel ID " + deleteInput + " not found in queue.");
       } else {
         Log.writeToLog("Customer name or Parcel ID " + deleteInput +
-            " not found.");
+                       " not found in queue.");
       }
     } else {
       if (Parcel.isValidID(deleteInput)) {
         Log.writeToLog("Successfully removed customer with parcel ID " +
-            deleteInput + ".");
+                       deleteInput + " from queue.");
       } else {
         Log.writeToLog("Successfully removed all customers with name " +
-            deleteInput + ".");
+                       deleteInput + " from queue.");
       }
+    }
+  }
+
+  public Customer nextCustomer() {
+    if (!queueOfCustomers.isEmpty()) {
+      return queueOfCustomers.remove();
+    } else {
+      return null;
     }
   }
 

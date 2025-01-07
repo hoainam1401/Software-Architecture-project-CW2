@@ -9,9 +9,7 @@ public class Log {
     log.append(event).append("\n");
   }
 
-  public static StringBuffer getLog() {
-    return log;
-  }
+  public static StringBuffer getLog() { return log; }
 
   public static void printToFile(String outputFile)
       throws FileNotFoundException {

@@ -10,7 +10,7 @@ public class Manager {
   static Worker worker = new Worker();
   static ParcelMap parcelMap = new ParcelMap();
 
-  public void mapParcelFromFile(String parcelFile, String custFile)
+  public static void mapParcelFromFile(String parcelFile, String custFile)
       throws FileNotFoundException {
     Scanner sc = new Scanner(new File(parcelFile));
     while (sc.hasNextLine()) {
@@ -33,48 +33,66 @@ public class Manager {
     sc.close();
   }
 
-  public void addParcel(String parcelID, int daysInDepot, int weight, int width,
-      int length, int height) {
+  public static void addParcel(String parcelID, int daysInDepot, int weight,
+                               int width, int length, int height) {
     parcelList.addParcel(parcelID, daysInDepot, weight, width, length, height);
   }
 
-  public void deleteParcel(String parcelID) {
+  public static void addCustomer(String cusName, String parcelID) {
+    if (Parcel.isValidID(parcelID)) {
+      cusQueue.addCustomer(cusName, parcelID);
+      parcelMap.addMapping(parcelID, cusName);
+      Log.writeToLog("Customer " + cusName + " added to queue successfully.");
+    } else {
+      Log.writeToLog("Failed to add customer " + cusName + "to queue.");
+    }
+  }
+
+  public static void deleteParcel(String parcelID) {
     parcelList.deleteParcel(parcelID);
     parcelMap.deleteParcel(parcelID);
   }
 
-  public void addCustomer(String cusName, String parcelID) {
-    if (Parcel.isValidID(parcelID)) {
-      cusQueue.addCustomer(cusName, parcelID);
-      parcelMap.addMapping(parcelID, cusName);
-      Log.writeToLog("Customer " + cusName + " added successfully.");
-    } else {
-      Log.writeToLog("Failed to add customer " + cusName + ".");
-    }
-  }
-
-  // this can remove one entry with a valid code
+  // this can remove one entry with am available valid code
   // or all entries of an available customer name
-  public void removeCustomer(String deleteInput) {
+  public static void removeCustomer(String deleteInput) {
     cusQueue.deleteCustomer(deleteInput);
   }
 
-  public void printParcelMap() {
+  public static void nextCustomer() { worker.process(); }
+
+  public static QueueofCustomers getCusQueue() { return cusQueue; }
+
+  public static ListofParcels getParcelList() { return parcelList; }
+
+  public static ParcelMap getParcelMap() { return parcelMap; }
+
+  public static void printParcelMap() {
     System.out.println("Print parcel map: ");
     System.out.println(parcelMap.toString());
   }
 
-  public void printSortedMap() {
+  public static void printSortedMap() {
     System.out.println("Print sorted parcel map: ");
     System.out.println(parcelMap.getSortedToString());
   }
 
-  public void printCustomerQueue() {
+  public static void printCustomerQueue() {
     System.out.println("Customer queue: ");
     System.out.println(cusQueue.toString());
   }
 
-  public void printLog() {
+  public static void printParcelList() {
+    System.out.println("Parcel list: ");
+    System.out.println(parcelList.toString());
+  }
+
+  public static void printCollectedList() {
+    System.out.println("Collected parcel list: ");
+    System.out.println(collectedparcelList.toString());
+  }
+
+  public static void printLog() {
     System.out.println("Log history:");
     System.out.println(Log.getLog().toString());
   }
