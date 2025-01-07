@@ -31,17 +31,32 @@ public class Manager {
       parcelMap.addMapping(lineComp[1], lineComp[0]);
     }
     sc.close();
-    System.out.println(parcelMap.toString());
   }
 
   public void addParcel(String parcelID, int daysInDepot, int weight, int width,
-                        int length, int height) {
+      int length, int height) {
     parcelList.addParcel(parcelID, daysInDepot, weight, width, length, height);
   }
 
   public void deleteParcel(String parcelID) {
     parcelList.deleteParcel(parcelID);
     parcelMap.deleteParcel(parcelID);
+  }
+
+  public void addCustomer(String cusName, String parcelID) {
+    if (Parcel.isValidID(parcelID)) {
+      cusQueue.addCustomer(cusName, parcelID);
+      parcelMap.addMapping(parcelID, cusName);
+      Log.writeToLog("Customer " + cusName + " added successfully.");
+    } else {
+      Log.writeToLog("Failed to add customer " + cusName + ".");
+    }
+  }
+
+  // this can remove one entry with a valid code
+  // or all entries of an available customer name
+  public void removeCustomer(String deleteInput) {
+    cusQueue.deleteCustomer(deleteInput);
   }
 
   public void printParcelMap() {
@@ -51,8 +66,16 @@ public class Manager {
 
   public void printSortedMap() {
     System.out.println("Print sorted parcel map: ");
-    System.out.println(parcelMap.getSortedMap().toString());
+    System.out.println(parcelMap.getSortedToString());
   }
 
-  public void nextCustomer() { worker.nextCustomer(); }
+  public void printCustomerQueue() {
+    System.out.println("Customer queue: ");
+    System.out.println(cusQueue.toString());
+  }
+
+  public void printLog() {
+    System.out.println("Log history:");
+    System.out.println(Log.getLog().toString());
+  }
 }

@@ -1,7 +1,8 @@
 public class Worker {
   Customer currentCus = null;
 
-  public void nextCustomer() {}
+  public void nextCustomer() {
+  }
 
   // fee calculation:
   //// if weight <= 4 and l + w + h <= 15: 5
@@ -9,9 +10,9 @@ public class Worker {
   //// else: 12
   // then for each day that exceeds 7 days in depot: +1
 
-  // Type 3: Customer pay 100% of the fee
-  // Type 2: Customer pay 60% of the fee
-  // Type 1: Premium packet: Customer don't have to pay the fee
+  // Type 3: Customers pay 100% of the fee
+  // Type 2: Customers pay 60% of the fee
+  // Type 1: Customers don't have to pay the fee
 
   public static int calculateFee(Parcel parcel) {
     if (parcel.getType() == 1) {
@@ -32,7 +33,7 @@ public class Worker {
         fee = 0.6 * fee;
       }
       // rounds to int
-      return (int)fee;
+      return (int) fee;
     }
   }
 }

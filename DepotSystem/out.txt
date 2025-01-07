@@ -1,0 +1,13 @@
+Customer Hoai Nam Ngo added successfully.
+Customer Hoai Nam Ngo added successfully.
+Customer Ho Nam Ngo added successfully.
+Failed to add customer Hoai Namgo.
+Customer Hoai N Ngo added successfully.
+Failed to add customer Hoai Namgo.
+Customer H Nam go added successfully.
+Customer Hoi m Ngo added successfully.
+Successfully removed all customers with name Hoai Nam Ngo.
+Parcel ID X155 not found.
+Successfully removed customer with parcel ID X150.
+Customer name or Parcel ID Hoai Namgo not found.
+

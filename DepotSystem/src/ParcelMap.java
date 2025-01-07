@@ -21,7 +21,9 @@ public class ParcelMap {
   public void sortMap() {
     ArrayList<String> tempSurnameList = new ArrayList<>();
     map.forEach(
-        (parcelID, cusName) -> { tempSurnameList.add(cusName.split(" ")[1]); });
+        (parcelID, cusName) -> {
+          tempSurnameList.add(cusName.split(" ")[1]);
+        });
     Collections.sort(tempSurnameList);
     // remove duplicates
     for (String surname : tempSurnameList) {
@@ -41,9 +43,13 @@ public class ParcelMap {
 
   public void addMapping(String parcelID, String cusName) {
     // only maps parcel id with customer name if parcel id is valid
-    if (ListofParcels.isValidID(parcelID)) {
+    if (Parcel.isValidID(parcelID)) {
       map.put(parcelID, cusName);
     }
+  }
+
+  public HashMap<String, String> getMap() {
+    return map;
   }
 
   public HashMap<String, String> getSortedMap() {
@@ -55,6 +61,18 @@ public class ParcelMap {
   public String toString() {
     StringBuilder s = new StringBuilder();
     map.forEach((parcelID, cusName) -> {
+      s.append(parcelID);
+      s.append(" ");
+      s.append(cusName);
+      s.append("\n");
+    });
+    return s.toString();
+  }
+
+  public String getSortedToString() {
+    sortMap();
+    StringBuilder s = new StringBuilder();
+    sortedMap.forEach((parcelID, cusName) -> {
       s.append(parcelID);
       s.append(" ");
       s.append(cusName);
