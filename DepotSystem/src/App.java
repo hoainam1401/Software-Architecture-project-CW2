@@ -55,10 +55,35 @@ public class App {
     currParcelText.setText(Manager.worker.parcelToField(currParcel));
     JButton printLogButton = new JButton("Log to File");
     printLogButton.setBounds(500, 600, 150, 50);
-    // TODO: Add Scroll
+    
+
     JLabel currCusLabel =
         new JLabel("Current customer: " + Manager.worker.getCurrCusName());
     currCusLabel.setBounds(500, 50, 500, 25);
+    JButton sortButton = new JButton("Sort");
+    sortButton.setBounds(200, 75, 100, 20);
+    JLabel label1 = new JLabel("ID");
+    JLabel label2 = new JLabel("Weight");
+    JLabel label3 = new JLabel("Width");
+    JLabel label4 = new JLabel("Length");
+    JLabel label5 = new JLabel("Height");
+    JTextField text1 = new JTextField();
+    JTextField text2 = new JTextField();
+    JTextField text3 = new JTextField();
+    JTextField text4 = new JTextField();
+    JTextField text5 = new JTextField();
+    label1.setBounds(50, 700, 50, 25);
+    label2.setBounds(200, 700, 50, 25);
+    label3.setBounds(350, 700, 50, 25);
+    label4.setBounds(500, 700, 50, 25);
+    label5.setBounds(650, 700, 50, 25);
+    text1.setBounds(100, 700, 80, 25);
+    text2.setBounds(250, 700, 80, 25);
+    text3.setBounds(400, 700, 80, 25);
+    text4.setBounds(550, 700, 80, 25);
+    text5.setBounds(700, 700, 80, 25);
+    JButton addParcelButton = new JButton("Add parcel");
+    addParcelButton.setBounds(400, 750, 100, 50);
     frame.add(nameLabel);
     frame.add(IDLabel);
     frame.add(nameField);
@@ -77,6 +102,27 @@ public class App {
     frame.add(currParcelText);
     frame.add(nextButton);
     frame.add(printLogButton);
+    frame.add(sortButton);
+    frame.add(label1);
+    frame.add(label2);
+    frame.add(label3);
+    frame.add(label4);
+    frame.add(label5);
+    frame.add(text1);
+    frame.add(text2);
+    frame.add(text3);
+    frame.add(text4);
+    frame.add(text5);
+    frame.add(addParcelButton);
+    JScrollPane queueScrollPane = new JScrollPane(queueList);
+    queueScrollPane.setBounds(50, 100, 300, 300);
+    JScrollPane parcelScrollPane = new JScrollPane(parcelList);
+    parcelScrollPane.setBounds(800, 100, 300, 300);
+    JScrollPane collectedScrollPane = new JScrollPane(collectedList);
+    collectedScrollPane.setBounds(800, 500, 300, 300);
+    frame.add(queueScrollPane);
+    frame.add(parcelScrollPane);
+    frame.add(collectedScrollPane);
 
     nextButton.addActionListener((actionEvent) -> {
       Manager.nextCustomer();
@@ -87,9 +133,11 @@ public class App {
           (Manager.worker.getCurrCustomer().getParcelID()));
       currCusLabel.setText("Current customer: " +
                            Manager.worker.getCurrCusName());
-      nextButton.setEnabled(false);
       currParcelText.setText(Manager.worker.parcelToField(tempParcel));
-      payButton.setEnabled(true);
+      if (!"".equals(currParcelText.getText())) {
+        nextButton.setEnabled(false);
+        payButton.setEnabled(true);
+      }
     });
 
     payButton.addActionListener((actionEvent) -> {
@@ -118,6 +166,8 @@ public class App {
 
     enterQueueButton.addActionListener((actionEvent) -> {
       Manager.addCustomer(nameField.getText(), parcelIDField.getText());
+      nameField.setText("");
+      parcelIDField.setText("");
       String[] tempCusArray =
           Manager.getCusQueue().getQueueofCustomersToArray();
       if (tempCusArray.length > 0) {
@@ -129,12 +179,35 @@ public class App {
     deleteQueueButton.addActionListener((actionEvent) -> {
       Manager.removeCustomer(nameField.getText());
       Manager.removeCustomer(parcelIDField.getText());
+      nameField.setText("");
+      parcelIDField.setText("");
       String[] tempCusArray =
           Manager.getCusQueue().getQueueofCustomersToArray();
       if (tempCusArray.length == 0) {
         nextButton.setEnabled(false);
       }
       queueList.setListData(tempCusArray);
+    });
+
+    sortButton.addActionListener((actionEvent) -> {
+      String[] tempQueueArray = Manager.cusQueue.getSortedQueueArray();
+      queueList.setListData(tempQueueArray);
+      Manager.cusQueue.setQueue(tempQueueArray);
+      Log.writeToLog("Customer queue sorted.");
+    });
+
+    addParcelButton.addActionListener((actionEvent) -> {
+      Manager.addParcel(text1.getText(), 0, Integer.parseInt(text2.getText()),
+                        Integer.parseInt(text3.getText()),
+                        Integer.parseInt(text4.getText()),
+                        Integer.parseInt(text5.getText()));
+      text1.setText("");
+      text2.setText("");
+      text3.setText("");
+      text4.setText("");
+      text5.setText("");
+      String[] tempParcelArray = Manager.getParcelMap().getParcelMapToArray();
+      parcelList.setListData(tempParcelArray);
     });
   }
 }

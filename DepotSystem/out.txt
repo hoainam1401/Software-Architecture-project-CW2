@@ -28,12 +28,11 @@ Customer Tim Smith added to queue successfully.
 Customer Tony Lawson added to queue successfully.
 Customer Ursula Milton added to queue successfully.
 Customer Viola Nicholson added to queue successfully.
-Successfully removed all customers with name Jo Hill from queue.
+Customer Nam Ngo added to queue successfully.
+Customer name or Parcel ID X not found in queue.
 Customer name or Parcel ID  not found in queue.
-Successfully removed customer with parcel ID X904 from queue.
-Customer name or Parcel ID  not found in queue.
-Customer name or Parcel ID  not found in queue.
-Successfully removed customer with parcel ID X552 from queue.
+Successfully removed all customers with name Viola Nicholson from queue.
+Parcel ID X540 not found in queue.
 Parcel X919 has been picked up. Moving to collected parcel list.
 Parcel X064 has been picked up. Moving to collected parcel list.
 Parcel X682 has been picked up. Moving to collected parcel list.
@@ -47,14 +46,15 @@ Parcel X386 has been picked up. Moving to collected parcel list.
 Parcel X857 has been picked up. Moving to collected parcel list.
 Parcel X309 has been picked up. Moving to collected parcel list.
 Parcel X733 has been picked up. Moving to collected parcel list.
+Parcel X285 has been picked up. Moving to collected parcel list.
 Parcel X213 has been picked up. Moving to collected parcel list.
 Parcel X009 has been picked up. Moving to collected parcel list.
+Parcel X904 has been picked up. Moving to collected parcel list.
+Parcel X552 has been picked up. Moving to collected parcel list.
 Parcel X121 has been picked up. Moving to collected parcel list.
 Parcel X025 has been picked up. Moving to collected parcel list.
 Parcel X198 has been picked up. Moving to collected parcel list.
 Parcel X521 has been picked up. Moving to collected parcel list.
-Successfully removed customer with parcel ID X540 from queue.
-Customer name or Parcel ID  not found in queue.
 Parcel X036 has been picked up. Moving to collected parcel list.
 Parcel X606 has been picked up. Moving to collected parcel list.
 Parcel X214 has been picked up. Moving to collected parcel list.
@@ -62,8 +62,7 @@ Parcel X507 has been picked up. Moving to collected parcel list.
 Parcel X020 has been picked up. Moving to collected parcel list.
 Parcel X086 has been picked up. Moving to collected parcel list.
 Parcel X746 has been picked up. Moving to collected parcel list.
-Customer Duc Anh Le added to queue successfully.
-Customer Hoai Nam Ngo added to queue successfully.
-Parcel X904 has been picked up. Moving to collected parcel list.
-Parcel X552 has been picked up. Moving to collected parcel list.
+Parcel ID X141 not found, please try again.
+There are currently no customer in queue.
+Customer queue sorted.
 

@@ -3,10 +3,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ParcelMap {
-  // maps the parcel id with customer name
-  // static HashMap<String, String> map = new HashMap<>();
-  // static ArrayList<String> sortedSurnameList = new ArrayList<>();
-  // static HashMap<String, String> sortedMap = new LinkedHashMap<>();
 
   HashMap<String, Parcel> map = new HashMap<>();
 
@@ -18,28 +14,6 @@ public class ParcelMap {
   }
 
   public Parcel deleteParcel(String parcelID) { return map.remove(parcelID); }
-
-  // public void sortMap() {
-  // ArrayList<String> tempSurnameList = new ArrayList<>();
-  // map.forEach((parcelID, cusName) -> {
-  // tempSurnameList.add(cusName.split(" ")[1]);
-  // });
-  // Collections.sort(tempSurnameList);
-  // // remove duplicates
-  // for (String surname : tempSurnameList) {
-  // if (!sortedSurnameList.contains(surname)) {
-  // sortedSurnameList.add(surname);
-  // }
-  // }
-
-  // for (String surname : sortedSurnameList) {
-  // map.forEach((parcelID, cusName) -> {
-  // if (cusName.split(" ")[1].equals(surname)) {
-  // sortedMap.put(parcelID, cusName);
-  // }
-  // });
-  // }
-  // }
 
   public boolean findParcel(String parcelID) {
     for (String id : map.keySet()) {
@@ -73,16 +47,4 @@ public class ParcelMap {
     });
     return s.toString();
   }
-
-  // public String getSortedToString() {
-  // sortMap();
-  // StringBuilder s = new StringBuilder();
-  // sortedMap.forEach((parcelID, cusName) -> {
-  // s.append(parcelID);
-  // s.append(" ");
-  // s.append(cusName);
-  // s.append("\n");
-  // });
-  // return s.toString();
-  // }
 }
