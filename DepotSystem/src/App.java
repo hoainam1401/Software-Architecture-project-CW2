@@ -55,7 +55,6 @@ public class App {
     currParcelText.setText(Manager.worker.parcelToField(currParcel));
     JButton printLogButton = new JButton("Log to File");
     printLogButton.setBounds(500, 600, 150, 50);
-    
 
     JLabel currCusLabel =
         new JLabel("Current customer: " + Manager.worker.getCurrCusName());
